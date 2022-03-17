@@ -9,6 +9,7 @@
     "postinstall": "remix setup cloudflare-workers",
     "build": "cross-env NODE_ENV=production remix build",
     "dev:stylelint": "stylelint **/*.scss",
+    "test":"postcss app/styles --use autoprefixer --dir app/styles --ext",
     "dev:css": "sass styles/:app/styles/ --style compressed --no-source-map --watch | postcss app/styles --use autoprefixer -b '>2%, last 3 versions' --dir app/styles --ext",
     "dev:remix": "cross-env NODE_ENV=development remix watch",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.js --watch",
@@ -16,6 +17,10 @@
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "deploy": "npm run build && wrangler publish"
   },
+  "browserslist":[
+    "last 3 versions",
+    "> 2%"
+  ],
   "dependencies": {
     "@remix-run/cloudflare-workers": "^1.2.3",
     "@remix-run/react": "^1.2.3",
